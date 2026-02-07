@@ -12,18 +12,17 @@ O vencedor será determinado pela soma dos atributos (*base stats*) dos Pokémon
 O projeto já está estruturado seguindo o padrão **MVC (Model–View–Controller)**:
 
 pokemon-battle-simulator/
-│
+
 ├── index.html → View (estrutura e interface da aplicação)
-│
+
 ├── assets/
-│ └── css/
-│ └── style.css → View (estilos e layout do projeto)
-│
+ └── css/
+  -style.css → View (estilos e layout do projeto)
+
 ├── js/
-│ ├── service.js → Model (requisições e comunicação com a PokeAPI)
-│ └── controller.js → Controller (lógica da aplicação, integração e manipulação do DOM)
-│
-└── README.md
+ -service.js → Model (requisições e comunicação com a PokeAPI)
+ -controller.js → Controller (lógica da aplicação, integração e manipulação do DOM)
+README.md
 
 
 **Funções de cada parte:**
@@ -37,7 +36,7 @@ pokemon-battle-simulator/
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/SEU_USUARIO/pokemon-battle-simulator.git
+   git clone https://github.com/EveS0110/pokemon-battle-simulator.git
 Abra a pasta do projeto no VS Code.
 
 Instale a extensão “Live Server” (caso ainda não tenha).
@@ -51,6 +50,7 @@ Clique com o botão direito no arquivo index.html e selecione:
 O projeto abrirá automaticamente no navegador, geralmente em:
 
 http://localhost:5500
+
 - Observações
 O projeto não utiliza banco de dados nem requer instalações adicionais.
 
@@ -60,7 +60,7 @@ Usem essa estrutura como base para desenvolver as partes de HTML, CSS e JavaScri
 
 Mantenham o padrão de pastas e nomes de arquivos para garantir que tudo funcione corretamente.
 
-- Fluxo de trabalho com Git (para o time)
+- Fluxo de trabalho com Git 
 Para evitar conflitos e manter a branch principal (main) limpa, sigam este fluxo:
 
 Atualize o repositório antes de começar a trabalhar:
