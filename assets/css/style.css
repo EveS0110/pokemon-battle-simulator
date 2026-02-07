@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+Instruções para quem vai cuidar do CSS:
+- Aplicar um design moderno e responsivo.
+- Utilizar Flexbox ou Grid para organizar as seções (Mobile-First).
+(sugestão) - Definir uma paleta de cores inspirada no universo Pokémon (vermelho, azul, amarelo, etc.).
+- Personalizar os botões, inputs e o modal de resultado.
+- Evitar alterar IDs ou classes sem combinar com o time (para manter a integração com o JS).
+*/
