@@ -4,17 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Battle Simulator</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
         <h1>Pokémon Battle Simulator</h1>
     </header>
     <main>
+        <section class="container">
+            <div class="card">
+                <h2>Jogador 1</h2>
+                    <form class="vermelho-form">
+                        <input type="text" placeholder="Escolha seu Pokémon" required/>
+                        <button type="submit">Buscar</button>
+                    </form>
+                <div class="pokemon vermelho"></div>
+            </div>            
+            <div class="status_batalha">
+                <h2>Aguardando lutadores...</h2>
+                <form class="batalha-form">
+                    <button type="submit">BATALHAR</button>
+                </form>
+            </div>
 
+            <div class="card">
+                <h2>Jogador 2</h2>
+                <form class="azul-form">
+                    <input type="text" placeholder="Escolha seu Pokémon" required/>
+                    <button type="submit">Buscar</button>
+                </form>
+                <div class="pokemon azul"></div>
+            </div>
+
+        </section>
     </main>
 
-    <script type="module" src="js/controller.js"></script>
+    <script type="module" src="assets/js/controller.js"></script>
 </body>
 </html>
 
