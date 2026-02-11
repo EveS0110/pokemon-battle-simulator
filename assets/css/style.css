@@ -3,7 +3,87 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --blue-player-background-color:#213C51;
+    --blue-player-border-color: #6594B1;
+    --red-player-background-color: #740A03;
+    --red-player-border-color: #C3110C;
+    --form-background-color: #9CCFFF;
+    --button-color: #FEB21A;
+}
+h1 {
+    text-align: center;
+}
 
+body {
+    background-color: var(--background-color);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 5rem;
+}
+form {
+    text-align: center;
+}
+/*area de jogadores */
+.pokemon {
+    flex: 1;
+    padding: 4% 4% 15% 4%;
+    border-radius: 1rem;
+}
+.card form {
+    display: flex;
+    background-color: var(--form-background-color);
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+    border-radius: 1rem;
+}
+.card input {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border: 0;
+    padding: 0.4rem;
+}
+.card button {
+    border: 0;
+    border-radius: 0.6rem;
+    padding: 0.4rem 1.2rem 0.4rem 1.2rem;
+    font-weight: 500;
+}
+.vermelho {
+    background-color: var(--red-player-background-color);
+    border: solid 0.5rem var(--red-player-border-color);
+}
+.card button {
+    background-color: var(--button-color);
+}
+.azul {
+    background-color: var(--blue-player-background-color);
+    border: solid 0.5rem var(--blue-player-border-color);
+}
+.card button {
+    background-color: var(--button-color);
+}
+
+/* area de status de batalha*/
+.status_batalha {
+    flex: 1.5;
+}
+.status_batalha button {
+    background-color: var(--button-color);
+    padding: 0.5rem;
+    border: 0;
+}
+@media (min-width: 768px) {
+    .container {
+    flex-direction: row;
+    align-items: stretch;
+    align-content: center;
+  }
+}
 /* 
 Instruções para quem vai cuidar do CSS:
 - Aplicar um design moderno e responsivo.
