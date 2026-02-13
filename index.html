@@ -12,31 +12,33 @@
     </header>
     <main>
         <section class="container">
-            <div class="card">
-                <h2>Jogador 1</h2>
-                    <form class="vermelho-form">
+            <div class="card card-azul">
+                <h2>JOGADOR 1</h2>
+                    <form class="azul-form">
                         <input type="text" placeholder="Escolha seu Pokémon" required/>
                         <button type="submit">Buscar</button>
                     </form>
-                <div class="pokemon vermelho"></div>
-            </div>            
-            <div class="status_batalha">
-                <h2>Aguardando lutadores...</h2>
-                <form class="batalha-form">
-                    <button type="submit">BATALHAR</button>
-                </form>
-            </div>
-
-            <div class="card">
-                <h2>Jogador 2</h2>
-                <form class="azul-form">
+                <div class="pokemon azul"></div>
+            </div>        
+                
+            <div class="card card-vermelho">
+                <h2>JOGADOR 2</h2>
+                <form class="vermelho-form">
                     <input type="text" placeholder="Escolha seu Pokémon" required/>
                     <button type="submit">Buscar</button>
                 </form>
-                <div class="pokemon azul"></div>
+                <div class="pokemon vermelho"></div>
             </div>
 
         </section>
+
+        <div class="status-batalha">
+            <h2>AGUARDANDO LUTADORES...</h2>
+            <form class="batalha-form">
+                <button type="submit">BATALHAR</button>
+            </form>
+        </div>
+
     </main>
 
     <script type="module" src="assets/js/controller.js"></script>
