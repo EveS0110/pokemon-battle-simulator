@@ -1,24 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 :root {
+    --font-color: white;
     --blue-player-background-color:#213C51;
     --blue-player-border-color: #6594B1;
-    --red-player-background-color: #740A03;
-    --red-player-border-color: #C3110C;
+    --red-player-background-color: #660B05;
+    --red-player-border-color: #F63049;
     --form-background-color: #9CCFFF;
     --button-color: #FEB21A;
 }
 h1 {
     text-align: center;
+    color: var(--font-color);
+    font-family: "Roboto Mono", monospace;
 }
-
 body {
-    background-color: var(--background-color);
+  background-image: url("../img/fundo.png");
+  background-size: cover;
+  background-position: center;  
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
 }
-
 .container {
     display: flex;
     flex-direction: column;
@@ -26,28 +33,30 @@ body {
     padding: 1rem;
     margin-top: 5rem;
 }
-form {
-    text-align: center;
-}
 /*area de jogadores */
 .pokemon {
     flex: 1;
     padding: 4% 4% 15% 4%;
     border-radius: 1rem;
 }
+.card {
+    font-family: "Roboto Mono", monospace;
+}
 .card form {
     display: flex;
     background-color: var(--form-background-color);
-    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
-    border-radius: 1rem;
+    padding: 0.8rem;
+    border-radius: 2.5rem;
+    gap: 0.5rem;
 }
 .card input {
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
     border: 0;
     padding: 0.4rem;
 }
 .card button {
+    background-color: var(--button-color);
     border: 0;
     border-radius: 0.6rem;
     padding: 0.4rem 1.2rem 0.4rem 1.2rem;
@@ -56,32 +65,58 @@ form {
 .vermelho {
     background-color: var(--red-player-background-color);
     border: solid 0.5rem var(--red-player-border-color);
+    margin-top: 1rem;
 }
-.card button {
-    background-color: var(--button-color);
+
+.card-vermelho h2 {
+    color: var(--red-player-border-color);
+    text-align: center;
 }
 .azul {
     background-color: var(--blue-player-background-color);
     border: solid 0.5rem var(--blue-player-border-color);
+    margin-top: 1rem;
 }
-.card button {
-    background-color: var(--button-color);
+.card-azul h2 {
+    color: var(--blue-player-border-color);
+    text-align: center;
 }
 
 /* area de status de batalha*/
-.status_batalha {
-    flex: 1.5;
+.status-batalha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(../img/status-batalha-fundo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 0.5rem solid var(--red-player-border-color);
+    border-right: 0.5rem solid var(--red-player-border-color);
+    border-bottom: 0.5rem solid var(--blue-player-border-color);
+    border-left: 0.5rem solid var(--blue-player-border-color);
+    color: var(--font-color);
+    font-family: "Roboto Mono", monospace;
+    align-items: center;
+    text-align: center;
+    width: 25rem;
+    margin: auto;
+    padding: 1rem 0.5rem 5rem 0.5rem;
+    gap: 2rem;
 }
-.status_batalha button {
+.status-batalha button {
     background-color: var(--button-color);
     padding: 0.5rem;
     border: 0;
+    border-radius: 0.6rem;
+    font-weight: 500;
 }
 @media (min-width: 768px) {
     .container {
     flex-direction: row;
     align-items: stretch;
     align-content: center;
+    justify-content: space-around;
   }
 }
 /* 
