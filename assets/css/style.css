@@ -95,6 +95,7 @@ body {
     border-right: 0.5rem solid var(--red-player-border-color);
     border-bottom: 0.5rem solid var(--blue-player-border-color);
     border-left: 0.5rem solid var(--blue-player-border-color);
+    border-radius: 0.6rem;
     color: var(--font-color);
     font-family: "Roboto Mono", monospace;
     align-items: center;
