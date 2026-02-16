@@ -5,78 +5,160 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --font-color: white;
-    --blue-player-background-color:#213C51;
-    --blue-player-border-color: #6594B1;
-    --red-player-background-color: #660B05;
-    --red-player-border-color: #F63049;
+    --blue-player-background-color: #015596;
+    --blue-player-border-color: #2d9ad1;
+    --red-player-background-color: #7d0a02;
+    --red-player-border-color: #eb0322;
     --form-background-color: #9CCFFF;
     --button-color: #FEB21A;
 }
+
 h1 {
     text-align: center;
     color: var(--font-color);
     font-family: "Roboto Mono", monospace;
 }
+
 body {
-  background-image: url("../img/fundo.png");
-  background-size: cover;
-  background-position: center;  
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
+    background-image: url("../img/fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
+header {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
-    padding: 1rem;
-    margin-top: 5rem;
+    padding: 15px 0;
 }
+
 /*area de jogadores */
 .pokemon {
-    flex: 1;
-    padding: 4% 4% 15% 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 1rem;
+    width: 90%;
 }
+
+.search-poke {
+    width: 75%;
+    padding: 8px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffffff;
+}
+
+.player-blue {
+    background: linear-gradient(180deg, var(--blue-player-border-color), var(--blue-player-background-color) 60%);
+}
+
+.player-red {
+    background: linear-gradient(180deg, var(--red-player-border-color), var(--red-player-background-color) 60%);
+}
+
+.poke-img {
+    width: 50%;
+    height: 40%;
+}
+
+.poke-infor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #00000075;
+    border-top: 1px solid rgb(255, 255, 255);
+    border-radius: 0 0 0.6rem 0.6rem;
+    color: #ffffffff;
+    padding: 5px 8px;
+    gap: 10px;
+}
+
+.poke-name {
+    font-size: 1.3rem;
+}
+
+.type {
+    background: linear-gradient(0deg, #065213, #00c12d 60%);
+    width: 50%;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+.atributes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+}
+
+.hp,
+.ataque,
+.defesa {
+    border: 1px solid #ffffffff;
+    padding: 2px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hp h3,
+.ataque h3,
+.defesa h3 {
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.hp p,
+.ataque p,
+.defesa p {
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+
 .card {
     font-family: "Roboto Mono", monospace;
-}
-.card form {
     display: flex;
-    background-color: var(--form-background-color);
-    padding: 0.8rem;
-    border-radius: 2.5rem;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
-.card input {
-    border-top-left-radius: 2.5rem;
-    border-bottom-left-radius: 2.5rem;
-    border: 0;
-    padding: 0.4rem;
-}
-.card button {
-    background-color: var(--button-color);
-    border: 0;
-    border-radius: 0.6rem;
-    padding: 0.4rem 1.2rem 0.4rem 1.2rem;
-    font-weight: 500;
-}
+
 .vermelho {
-    background-color: var(--red-player-background-color);
-    border: solid 0.5rem var(--red-player-border-color);
-    margin-top: 1rem;
+    border: 3px solid var(--red-player-border-color);
 }
 
 .card-vermelho h2 {
     color: var(--red-player-border-color);
     text-align: center;
 }
+
 .azul {
-    background-color: var(--blue-player-background-color);
-    border: solid 0.5rem var(--blue-player-border-color);
-    margin-top: 1rem;
+    border: 3px solid var(--blue-player-border-color);
 }
+
 .card-azul h2 {
     color: var(--blue-player-border-color);
     text-align: center;
@@ -101,10 +183,10 @@ body {
     align-items: center;
     text-align: center;
     width: 20rem;
-    margin: auto;
-    padding: 0.1rem 0.1rem 5rem 0.1rem;
+    height: 15rem;
     gap: 2rem;
 }
+
 .status-batalha button {
     background-color: var(--button-color);
     padding: 0.5rem;
@@ -112,19 +194,76 @@ body {
     border-radius: 0.6rem;
     font-weight: 500;
 }
-@media (min-width: 768px) {
-    .container {
-    flex-direction: row;
-    align-items: stretch;
-    align-content: center;
-    justify-content: space-around;
-  }
+
+@media (min-width: 500px){
+    .card{
+        width: 60%;
+    }
 }
-/* 
-Instruções para quem vai cuidar do CSS:
-- Aplicar um design moderno e responsivo.
-- Utilizar Flexbox ou Grid para organizar as seções (Mobile-First).
-(sugestão) - Definir uma paleta de cores inspirada no universo Pokémon (vermelho, azul, amarelo, etc.).
-- Personalizar os botões, inputs e o modal de resultado.
-- Evitar alterar IDs ou classes sem combinar com o time (para manter a integração com o JS).
-*/
+
+@media (min-width: 800px) {
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    main {
+        height: 100%;
+    }
+    
+    .container {
+        height: 100%;
+        position: relative;
+        gap: 23%;
+    }
+    
+    .card {
+        width: 100%;
+        height: 60%;
+    }
+    
+    .pokemon {
+        height: 100%;
+        width: 90%;
+    }
+    
+    .hp h3,
+    .ataque h3,
+    .defesa h3 {
+        font-size: 1rem;
+    }
+    
+    .hp p,
+    .ataque p,
+    .defesa p {
+        font-size: 1rem;
+    }
+    
+    .status-batalha {
+        width: 25%;
+        height: 46%;
+        position: fixed;
+        top: 36%;
+    }
+    
+    .poke-img {
+        width: 50%;
+        height: 50%;
+    }
+    
+    .container {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (min-width: 970px) {
+    .container {
+        height: 100%;
+        padding: 0 10%;
+        position: relative;
+        gap: 30%;
+    }
+}
