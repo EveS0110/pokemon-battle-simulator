@@ -47,13 +47,18 @@ header {
 }
 
 /*area de jogadores */
-.pokemon {
+.pokemon-card {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
     width: 90%;
+    /* Reutilizando o degradê que você já tinha planejado */
+    background: linear-gradient(180deg, var(--blue-player-border-color), var(--blue-player-background-color) 60%);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .search-poke {
@@ -74,35 +79,42 @@ header {
     background: linear-gradient(180deg, var(--red-player-border-color), var(--red-player-background-color) 60%);
 }
 
-.poke-img {
-    width: 50%;
-    height: 40%;
+.pokemon-image {
+    display: block;      /* Garante que a imagem se comporte como bloco */
+    margin: 0 auto;      /* Centraliza horizontalmente */
+    width: 60%;
+    height: auto;
+    padding: 20px 0;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
 }
 
 .poke-infor {
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background-color: #00000075;
-    border-top: 1px solid rgb(255, 255, 255);
-    border-radius: 0 0 0.6rem 0.6rem;
-    color: #ffffffff;
-    padding: 5px 8px;
-    gap: 10px;
+    border-top: 1px solid white;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
 }
 
 .poke-name {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin-bottom: 5px;
 }
 
-.type {
+.pokemon-types {
     background: linear-gradient(0deg, #065213, #00c12d 60%);
-    width: 50%;
-    text-align: center;
-    padding: 3px 5px;
-    border-radius: 5px;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.pokemon-stats {
+    font-size: 1.1rem;
 }
 
 .atributes {
@@ -193,6 +205,67 @@ header {
     border: 0;
     border-radius: 0.6rem;
     font-weight: 500;
+}
+
+.loading {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loading span {
+    width: 12px;
+    height: 12px;
+    background-color: var(--button-color);
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 0.6s infinite alternate;
+}
+
+
+.loading span:nth-child(2) { animation-delay: 0.2s; }
+.loading span:nth-child(3) { animation-delay: 0.4s; }
+
+.error-state, .empty-state {
+    color: #ffcccc;
+    font-family: "Roboto Mono", monospace;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+.error-state {
+    color: #ff4d4d; 
+}
+
+button, .status-batalha button {
+    cursor: pointer;
+    transition: all 0.3s ease; /* Faz a transição ser suave */
+}
+
+
+button:hover, .status-batalha button:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% */
+    filter: brightness(1.2); /* Deixa a cor mais viva */
+    box-shadow: 0 0 15px var(--button-color); /* Adiciona um brilho ao redor */
+}
+
+button:active, .status-batalha button:active {
+    transform: scale(0.95); /* Dá a sensação de que o botão foi afundado */
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn{
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @media (min-width: 500px){

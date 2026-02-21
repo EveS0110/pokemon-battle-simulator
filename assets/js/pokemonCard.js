@@ -1,7 +1,9 @@
-export function createPokemonCard(pokemon){
+export function createPokemonCard(pokemon, side = blue){
     const card = document.createElement("article")
 
     card.classList.add("pokemon-card");
+
+    card.classList.add(side === 'blue' ? "player-blue" : "player-red")
 
     card.innerHTML = `
     <img
@@ -23,5 +25,11 @@ export function createPokemonCard(pokemon){
     </div>
     `;
 
+
+    card.style.animation = "fadeIn 0.3s ease"
+
     return card;
 }
+
+
+//Cria um componete visual representando um pokemon selecionado - apenas cria e retonar o elemento

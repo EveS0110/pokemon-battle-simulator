@@ -8,6 +8,8 @@ export function showLoading(container){
         `;
 }
 
+// Substitui todo o conteúido do contairner e represnta o carregamento visual 
+
 
 export function showError(container, message){
     container.innerHTML = `
@@ -18,6 +20,9 @@ export function showError(container, message){
 }
 
 
+// exibi mensagem de erro 
+
+
 export function showEmpty(container){
     container.innerHTML = `
         <p class="empty-state">
@@ -26,3 +31,5 @@ export function showEmpty(container){
          `;
 
 }
+
+//nenhum pokmon encontrado 
