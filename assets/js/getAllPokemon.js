@@ -1,4 +1,4 @@
-const getPokemon = require("./getPokemon.js")
+import getPokemon from "./getPokemon.js"
 
 async function getAllPokemon(offset = 0, limit=10) {
   try {
@@ -32,7 +32,7 @@ async function getAllPokemon(offset = 0, limit=10) {
   };
 };
 
-getAllPokemon();
+export default getAllPokemon
 
 
 

@@ -14,6 +14,105 @@
     --red-player-border-color: #eb0322;
     --form-background-color: #9CCFFF;
     --button-color: #FEB21A;
+
+    --primary: #00e5ff;
+    --primary-soft: rgba(0, 229, 255, 0.15);
+    --card-bg: #0f172a;
+    --border: rgba(255, 255, 255, 0.08);
+    --radius: 16px;
+    --transition: 0.25s ease;
+
+    /* Tipos clássicos */
+  --type-normal: #A8A77A;
+  --type-fire: #EE8130;
+  --type-water: #6390F0;
+  --type-electric: #F7D02C;
+  --type-grass: #7AC74C;
+  --type-ice: #96D9D6;
+  --type-fighting: #C22E28;
+  --type-poison: #A33EA1;
+  --type-ground: #E2BF65;
+  --type-flying: #A98FF3;
+  --type-psychic: #F95587;
+  --type-bug: #A6B91A;
+  --type-rock: #B6A136;
+  --type-ghost: #735797;
+  --type-dragon: #6F35FC;
+  --type-dark: #705746;
+  --type-steel: #B7B7CE;
+  --type-fairy: #D685AD;
+}
+
+.type-fairy{
+    background-color: var(--type-fairy);
+}
+
+.type-steel{
+    background-color: var(--type-steel);
+}
+
+.type-dark{
+    background-color: var(--type-dark);
+}
+
+.type-dragon{
+    background-color: var(--type-dragon);
+}
+
+.type-ghost{
+    background-color: var(--type-ghost);
+}
+
+.type-rock{
+    background-color: var(--type-rock);
+}
+
+.type-bug{
+    background-color: var(--type-bug);
+}
+
+.type-psychic{
+    background-color: var(--type-psychic);
+}
+
+.type-flying{
+    background-color: var(--type-flying);
+}
+
+.type-ground{
+    background-color: var(--type-ground);
+}
+
+.type-poison{
+    background-color: var(--type-poison);
+}
+
+.type-fighting{
+    background-color: var(--type-fighting);
+}
+
+.type-ice{
+    background-color: var(--type-ice);
+}
+
+.type-grass{
+    background-color: var(--type-grass);
+}
+
+.type-normal{
+    background-color: var(--type-normal);
+}
+
+.type-fire{
+    background-color: var(--type-fire);
+}
+
+.type-water{
+    background-color: var(--type-water);
+}
+
+.type-electric{
+    background-color: var(--type-electric);
 }
 
 h1 {
@@ -47,13 +146,14 @@ header {
 }
 
 /*area de jogadores */
+
 .pokemon {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-    width: 90%;
+    width: 100%;
 }
 
 .search-poke {
@@ -98,8 +198,6 @@ header {
 }
 
 .type {
-    background: linear-gradient(0deg, #065213, #00c12d 60%);
-    width: 50%;
     text-align: center;
     padding: 3px 5px;
     border-radius: 5px;
@@ -144,6 +242,7 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    width: 90%;
 }
 
 .vermelho {
@@ -164,6 +263,140 @@ header {
     text-align: center;
 }
 
+.modal-poke {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: #00000093;
+}
+
+.modal {
+    background: rgba(10, 20, 35, 0.65);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
+    padding: 10px;
+    width: 90%;
+    height: 85%;
+}
+
+.modal form {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.modal form input {
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    background: rgba(0, 10, 20, 0.6);
+    color: #fff;
+    width: 70%;
+    outline: none;
+}
+
+.modal input:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+    transition: var(--transition);
+}
+
+.modal form button {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #00e5ff, #00bcd4);
+    color: #001018;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+}
+
+.cards-poke {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 84%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+.poke-option {
+    width: 155px;
+    height: 180px;
+    background: rgba(10, 20, 35, 0.85);
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.1),
+        0 0 5px rgba(0, 229, 255, 0.25);
+    transition: 0.25s;
+}
+
+.poke-option:hover {
+    transform: translateY(-3px) scale(1.01);
+    border-color: #00e5ff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+}
+
+.poke-option img {
+    width: 100%;
+    height: 85%;
+}
+
+.poke-option span {
+    text-align: center;
+    margin-top: 6px;
+    font-weight: 500;
+    color: #c8f6ff;
+    font-size: 1.3rem;
+}
+
+.btn-page {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 0 8px;
+    gap: 10px;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 10px;
+}
+
+.btn-page button {
+     width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  background: rgba(0, 10, 20, 0.7);
+  color: #9be7ff;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-page button:hover {
+  background: rgba(0, 229, 255, 0.1);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.6);
+}
+
+.btn-page button img {
+    width: 50%;
+    height: 100%;
+}
+
 /* area de status de batalha*/
 .status-batalha {
     display: flex;
@@ -182,7 +415,7 @@ header {
     font-family: "Roboto Mono", monospace;
     align-items: center;
     text-align: center;
-    width: 20rem;
+    width: 80%;
     height: 15rem;
     gap: 2rem;
 }
@@ -195,8 +428,8 @@ header {
     font-weight: 500;
 }
 
-@media (min-width: 500px){
-    .card{
+@media (min-width: 500px) {
+    .card {
         width: 60%;
     }
 }
@@ -208,51 +441,48 @@ header {
         flex-direction: column;
         justify-content: center;
     }
-    
+
     main {
         height: 100%;
     }
-    
+
+    .modal{
+        width: 72%;
+    }
+
+    .poke-option{
+        width: 200px;
+        height: 250px;
+    }
+
     .container {
         height: 100%;
         position: relative;
         gap: 23%;
     }
-    
+
     .card {
         width: 100%;
         height: 60%;
     }
-    
+
     .pokemon {
         height: 100%;
         width: 90%;
     }
-    
-    .hp h3,
-    .ataque h3,
-    .defesa h3 {
-        font-size: 1rem;
-    }
-    
-    .hp p,
-    .ataque p,
-    .defesa p {
-        font-size: 1rem;
-    }
-    
+
     .status-batalha {
         width: 25%;
         height: 46%;
         position: fixed;
         top: 36%;
     }
-    
+
     .poke-img {
         width: 50%;
         height: 50%;
     }
-    
+
     .container {
         flex-direction: row;
         align-items: center;

@@ -13,14 +13,16 @@
     <header>
         <h1>Pokémon Battle Simulator</h1>
     </header>
+
     <main>
         <section class="container">
             <div class="card card-azul">
+                <div id="player1-container"></div>
                 <h2>JOGADOR 1</h2>
 
-                <button class="search-poke player-blue" type="submit">Escolha seu Pokémon</button>
+                <button class="search-poke player-blue">Escolha seu Pokémon</button>
 
-                <div class="pokemon azul">
+                <div id="playerOne" class="pokemon azul">
 
                     <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
 
@@ -52,16 +54,17 @@
             <div class="status-batalha">
                 <h2>AGUARDANDO LUTADORES...</h2>
                 <form class="batalha-form">
-                    <button type="submit">BATALHAR</button>
+                    <button>BATALHAR</button>
                 </form>
             </div>
 
             <div class="card card-vermelho">
+                <div id="player2-container"></div>
                 <h2>JOGADOR 2</h2>
 
-                <button class="search-poke player-red" type="submit">Escolha seu Pokémon</button>
+                <button class="search-poke player-red">Escolha seu Pokémon</button>
 
-                <div class="pokemon vermelho">
+                <div id="playerTwo" class="pokemon vermelho">
 
                     <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
 
@@ -94,7 +97,7 @@
 
     </main>
 
-    <script type="module" src="assets/js/controller.js"></script>
+    <script type="module" src="assets/js/index.js"></script>
 </body>
 
 </html>
