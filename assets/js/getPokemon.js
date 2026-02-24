@@ -36,4 +36,4 @@ async function getPokemon(name) {
   };
 };
 
-module.exports = getPokemon;
+export default getPokemon;
