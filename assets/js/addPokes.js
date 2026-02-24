@@ -12,13 +12,13 @@ function addPoke(card) {
         const hoverCard = new Audio("assets/audio/hoverCard.mpeg");
 
         el.addEventListener("mouseenter", async () => {
-            hoverCard.currentTime = 0; // reinicia se já estiver tocando
+            hoverCard.currentTime = 0;
             hoverCard.play();
 
             setTimeout(() => {
                 hoverCard.pause();
-                hoverCard.currentTime = 0; // opcional
-            }, 2000); // tempo em ms (2s)
+                hoverCard.currentTime = 0;
+            }, 2000);
         });
 
         el.addEventListener("click", async () => {
