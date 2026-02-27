@@ -1,6 +1,7 @@
 import createModal from "./createModal.js";
 import viewPokes from "./viewPokes.js";
 import listPokescard from "./listPokeCard.js"
+import initBattleLogic from "./battle.js";
 
 export const introMusic = new Audio("assets/audio/openmusic.mp3");
 introMusic.loop = true;
@@ -40,4 +41,9 @@ btn.forEach(el => {
             listPokescard("playerTwo")
         };
     });
-});
+})
+
+initBattleLogic();
+
+
+	

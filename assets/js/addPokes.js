@@ -2,33 +2,35 @@ import getPokemon from "./getPokemon.js";
 import { introMusic, playWithLimit } from "./index.js";
 
 function addPoke(card) {
-    let pokeCard = document.querySelectorAll(".poke-option");
-    const pokeMain = document.getElementById(`${card}`);
+  let pokeCard = document.querySelectorAll(".poke-option");
+  const pokeMain = document.getElementById(`${card}`);
 
-    pokeCard.forEach(el => {
-        let pokeClicked
-        const chosenPoke = new Audio("assets/audio/WhatsApp Audio 2026-02-23 at 20.51.48.mpeg");
+  pokeCard.forEach((el) => {
+    let pokeClicked;
+    const chosenPoke = new Audio(
+      "assets/audio/WhatsApp Audio 2026-02-23 at 20.51.48.mpeg",
+    );
 
-        const hoverCard = new Audio("assets/audio/hoverCard.mpeg");
+    const hoverCard = new Audio("assets/audio/hoverCard.mpeg");
 
-        el.addEventListener("mouseenter", async () => {
-            hoverCard.currentTime = 0;
-            hoverCard.play();
+    el.addEventListener("mouseenter", async () => {
+      hoverCard.currentTime = 0;
+      hoverCard.play();
 
-            setTimeout(() => {
-                hoverCard.pause();
-                hoverCard.currentTime = 0;
-            }, 2000);
-        });
+      setTimeout(() => {
+        hoverCard.pause();
+        hoverCard.currentTime = 0;
+      }, 2000);
+    });
 
-        el.addEventListener("click", async () => {
-            pokeClicked = el.lastElementChild.textContent
+    el.addEventListener("click", async () => {
+      pokeClicked = el.lastElementChild.textContent;
 
-            const pokemon = await getPokemon(pokeClicked);
-            console.log(pokemon)
-            const modal = document.querySelector(".modal-poke");
+      const pokemon = await getPokemon(pokeClicked);
+      console.log(pokemon);
+      const modal = document.querySelector(".modal-poke");
 
-            pokeMain.innerHTML = `
+      pokeMain.innerHTML = `
             <img class="poke-img" src="${pokemon.image}" alt="${pokemon.name}">
 
             <div class="poke-infor">
@@ -52,18 +54,22 @@ function addPoke(card) {
                     <p>${pokemon.defense}</p>
                 </div>
             </div>
-            `
-            chosenPoke.play();
+            `;
+      pokeMain.setAttribute("data-stats", pokemon.totalStats);
+      pokeMain.setAttribute("data-name", pokemon.name);
+      pokeMain.setAttribute("data-image", pokemon.image);
 
-            setTimeout(() => {
-                chosenPoke.pause();
-                chosenPoke.currentTime = 0;
-            }, 2000);
+      chosenPoke.play();
 
-            introMusic.play();
-            return modal.remove();
-        });
+      setTimeout(() => {
+        chosenPoke.pause();
+        chosenPoke.currentTime = 0;
+      }, 2000);
+
+      introMusic.play();
+      return modal.remove();
     });
-};
+  });
+}
 
 export default addPoke;

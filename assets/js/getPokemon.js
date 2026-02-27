@@ -19,7 +19,8 @@ async function getPokemon(name) {
     const types = data.types.map(t => t.type.name);
     const hp = data.stats.find(s => s.stat.name === "hp")?.base_stat;
     const attack = data.stats.find(s => s.stat.name === "attack")?.base_stat;
-    const defense = data.stats.find(s => s.stat.name === "defense")?.base_stat;
+    const defense = data.stats.find(s => s.stat.name === "defense")?.base_stat;  
+    const totalStats = data.stats.reduce((acc, stat) => acc + stat.base_stat, 0);
     const image = data.sprites.other["official-artwork"].front_default;
 
     return {
@@ -28,6 +29,7 @@ async function getPokemon(name) {
       hp,
       attack,
       defense,
+      totalStats,
       image
     };
 
