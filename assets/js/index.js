@@ -1,14 +1,24 @@
 import createModal from "./createModal.js";
 import viewPokes from "./viewPokes.js";
 import listPokescard from "./listPokeCard.js"
+import { introMusic, unlockSounds } from "./sounds.js";
+import "./battleController.js";
 
-export const introMusic = new Audio("assets/audio/openmusic.mp3");
-introMusic.loop = true;
+let musicStarted = false;
+
+//export const introMusic = new Audio("assets/audio/openmusic.mp3");
+//introMusic.loop = true;
 
 document.addEventListener("click", () => {
-    introMusic.play();
-    introMusic.volume = 0.3
-});
+    if (!musicStarted) {
+        unlockSounds();
+        introMusic.play();
+        introMusic.volume = 0.3;
+        musicStarted = true;
+    }
+}, { once: true });
+
+
 
 const btn = document.querySelectorAll(".search-poke");
 
@@ -30,14 +40,14 @@ btn.forEach(el => {
         await viewPokes();
 
         introMusic.pause();
-        playWithLimit("assets/audio/WhatsApp Audio 2026-02-23 at 19.59.21.mpeg", 5);
+        playWithLimit("assets/audio/WhatsApp Audio 2026-02-23 at 19.59.21.mp3", 5);
 
         if (btn[0] === el) {
-            listPokescard("playerOne")
+            listPokescard("playerOne", "playerOneB", 1)
         };
 
         if (btn[1] === el) {
-            listPokescard("playerTwo")
+            listPokescard("playerTwo", "playerTwoB", 2)
         };
     });
 });
