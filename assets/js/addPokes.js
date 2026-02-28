@@ -1,69 +1,79 @@
+
 import getPokemon from "./getPokemon.js";
-import { introMusic, playWithLimit } from "./index.js";
+import { setPlayerPokemons } from "./playersData.js";
+import { playHover, playChoose } from "./sounds.js";
 
-function addPoke(card) {
-    let pokeCard = document.querySelectorAll(".poke-option");
-    const pokeMain = document.getElementById(`${card}`);
+function addPoke(card1, card2, jogador) {
+  const cards = [
+    document.getElementById(card1),
+    document.getElementById(card2)
+  ];
 
-    pokeCard.forEach(el => {
-        let pokeClicked
-        const chosenPoke = new Audio("assets/audio/WhatsApp Audio 2026-02-23 at 20.51.48.mpeg");
+  const pokeOptions = document.querySelectorAll(".poke-option");
+  if (!pokeOptions || pokeOptions.length === 0) return;
 
-        const hoverCard = new Audio("assets/audio/hoverCard.mpeg");
+  let slotAtual = 0;
+  const pokemonsEscolhidos = [];
 
-        el.addEventListener("mouseenter", async () => {
-            hoverCard.currentTime = 0; // reinicia se já estiver tocando
-            hoverCard.play();
-
-            setTimeout(() => {
-                hoverCard.pause();
-                hoverCard.currentTime = 0; // opcional
-            }, 2000); // tempo em ms (2s)
-        });
-
-        el.addEventListener("click", async () => {
-            pokeClicked = el.lastElementChild.textContent
-
-            const pokemon = await getPokemon(pokeClicked);
-            console.log(pokemon)
-            const modal = document.querySelector(".modal-poke");
-
-            pokeMain.innerHTML = `
-            <img class="poke-img" src="${pokemon.image}" alt="${pokemon.name}">
-
-            <div class="poke-infor">
-                <h3 class="poke-name">${pokemon.name}</h3>
-
-                <span class="type type-${pokemon.types[0]}">${[...pokemon.types]}</span>
-
-                <div class="atributes">
-                <div class="hp">
-                    <h3>HP</h3>
-                    <p>${pokemon.hp}</p>
-                </div>
-
-                <div class="ataque">
-                    <h3>Ataque</h3>
-                    <p>${pokemon.attack}</p>
-                </div>
-
-                <div class="defesa">
-                    <h3>Defesa</h3>
-                    <p>${pokemon.defense}</p>
-                </div>
-            </div>
-            `
-            chosenPoke.play();
-
-            setTimeout(() => {
-                chosenPoke.pause();
-                chosenPoke.currentTime = 0;
-            }, 2000);
-
-            introMusic.play();
-            return modal.remove();
-        });
+  
+  pokeOptions.forEach((opt) => {
+    opt.addEventListener("mouseenter", () => {
+      playHover();
     });
-};
+  });
+
+ 
+  pokeOptions.forEach((opt) => {
+    opt.addEventListener("click", async () => {
+      if (slotAtual >= cards.length) return;
+
+      const name = opt.dataset.name;
+      if (!name) return;
+
+      const pokemon = await getPokemon(name);
+      if (!pokemon) {
+        alert("Pokémon não encontrado.");
+        return;
+      }
+
+      const totalStats = (pokemon.hp || 0) + (pokemon.attack || 0) + (pokemon.defense || 0);
+
+      const target = cards[slotAtual];
+      target.innerHTML = `
+        <img class="poke-img" src="${pokemon.image}" alt="${pokemon.name}">
+        <div class="poke-infor">
+          <h3 class="poke-name">${pokemon.name}</h3>
+          <span class="type type-${pokemon.types[0]}">${pokemon.types.join(", ")}</span>
+          <div class="atributes">
+            <div class="hp"><h3>HP</h3><p>${pokemon.hp}</p></div>
+            <div class="ataque"><h3>Ataque</h3><p>${pokemon.attack}</p></div>
+            <div class="defesa"><h3>Defesa</h3><p>${pokemon.defense}</p></div>
+          </div>
+        </div>
+      `;
+
+      target.setAttribute("data-stats", totalStats);
+      target.setAttribute("data-name", pokemon.name);
+      target.setAttribute("data-image", pokemon.image);
+
+      pokemonsEscolhidos.push(pokemon);
+      playChoose();
+
+      slotAtual++;
+
+     
+      if (slotAtual === cards.length) {
+        setPlayerPokemons(jogador, pokemonsEscolhidos.slice());
+        const modal = document.querySelector(".modal-poke");
+        if (modal) modal.remove();
+
+       
+        window.dispatchEvent(
+          new CustomEvent("escolhaCompleta", { detail: { jogador } })
+        );
+      }
+    });
+  });
+}
 
 export default addPoke;

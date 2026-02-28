@@ -1,53 +1,34 @@
 import createModal from "./createModal.js";
 import viewPokes from "./viewPokes.js";
-import listPokescard from "./listPokeCard.js"
-import { introMusic, unlockSounds } from "./sounds.js";
-import "./battleController.js";
-
-let musicStarted = false;
-
-//export const introMusic = new Audio("assets/audio/openmusic.mp3");
-//introMusic.loop = true;
+import listPokeCard from "./listPokeCard.js"; 
+import initBattleLogic from "./battle.js";
+import { introMusic } from "./sounds.js";
 
 document.addEventListener("click", () => {
-    if (!musicStarted) {
-        unlockSounds();
-        introMusic.play();
-        introMusic.volume = 0.3;
-        musicStarted = true;
-    }
+  introMusic.play();
+  introMusic.volume = 0.3;
 }, { once: true });
-
-
 
 const btn = document.querySelectorAll(".search-poke");
 
-export function playWithLimit(src, seconds) {
-    const audio = new Audio(src);
+btn.forEach((el, index) => {
+  el.addEventListener("click", async () => {
+    
+    createModal();
 
-    audio.play();
+   
+    await viewPokes();
 
-    setTimeout(() => {
-        audio.pause();
-        audio.currentTime = 0;
-    }, seconds * 1000);
-}
+    
+    introMusic.pause();
 
-btn.forEach(el => {
-
-    el.addEventListener("click", async () => {
-        createModal();
-        await viewPokes();
-
-        introMusic.pause();
-        playWithLimit("assets/audio/WhatsApp Audio 2026-02-23 at 19.59.21.mp3", 5);
-
-        if (btn[0] === el) {
-            listPokescard("playerOne", "playerOneB", 1)
-        };
-
-        if (btn[1] === el) {
-            listPokescard("playerTwo", "playerTwoB", 2)
-        };
-    });
+    
+    if (index === 0) {
+      listPokeCard("playerOne", "playerOneB", 1);
+    } else if (index === 1) {
+      listPokeCard("playerTwo", "playerTwoB", 2);
+    }
+  });
 });
+
+initBattleLogic();
