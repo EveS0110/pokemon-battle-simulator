@@ -3,6 +3,12 @@ import getPokemon from "./getPokemon.js";
 import { setPlayerPokemons } from "./playersData.js";
 import { playHover, playChoose } from "./sounds.js";
 
+
+const progressoEscolha = {
+  1: { slot: 0, lista: [] },
+  2: { slot: 0, lista: [] }
+};
+
 function addPoke(card1, card2, jogador) {
   const cards = [
     document.getElementById(card1),
@@ -12,20 +18,24 @@ function addPoke(card1, card2, jogador) {
   const pokeOptions = document.querySelectorAll(".poke-option");
   if (!pokeOptions || pokeOptions.length === 0) return;
 
-  let slotAtual = 0;
-  const pokemonsEscolhidos = [];
-
   
   pokeOptions.forEach((opt) => {
     opt.addEventListener("mouseenter", () => {
-      playHover();
+      try {
+        playHover();
+      } catch (err) {
+        console.warn("Falha ao tocar som de hover:", err);
+      }
     });
   });
 
- 
+  
   pokeOptions.forEach((opt) => {
     opt.addEventListener("click", async () => {
-      if (slotAtual >= cards.length) return;
+      const dados = progressoEscolha[jogador];
+
+      
+      if (dados.slot >= cards.length) return;
 
       const name = opt.dataset.name;
       if (!name) return;
@@ -37,8 +47,9 @@ function addPoke(card1, card2, jogador) {
       }
 
       const totalStats = (pokemon.hp || 0) + (pokemon.attack || 0) + (pokemon.defense || 0);
+      const target = cards[dados.slot];
 
-      const target = cards[slotAtual];
+      
       target.innerHTML = `
         <img class="poke-img" src="${pokemon.image}" alt="${pokemon.name}">
         <div class="poke-infor">
@@ -52,28 +63,42 @@ function addPoke(card1, card2, jogador) {
         </div>
       `;
 
+      
       target.setAttribute("data-stats", totalStats);
       target.setAttribute("data-name", pokemon.name);
       target.setAttribute("data-image", pokemon.image);
 
-      pokemonsEscolhidos.push(pokemon);
+      
+      dados.lista.push(pokemon);
       playChoose();
+      dados.slot++; 
 
-      slotAtual++;
+      if (dados.slot === cards.length) {
+        setPlayerPokemons(jogador, [...dados.lista]);
 
-     
-      if (slotAtual === cards.length) {
-        setPlayerPokemons(jogador, pokemonsEscolhidos.slice());
-        const modal = document.querySelector(".modal-poke");
-        if (modal) modal.remove();
+        
+        window.dispatchEvent(
+          new CustomEvent("pokemonsAtualizados", {
+            detail: { jogador, pokemons: dados.lista }
+          })
+        );
 
-       
         window.dispatchEvent(
           new CustomEvent("escolhaCompleta", { detail: { jogador } })
         );
+
+        const modal = document.querySelector(".modal-poke");
+        if (modal) modal.remove();
+        
+        
       }
     });
   });
+}
+
+export function resetProgresso() {
+  progressoEscolha[1] = { slot: 0, lista: [] };
+  progressoEscolha[2] = { slot: 0, lista: [] };
 }
 
 export default addPoke;

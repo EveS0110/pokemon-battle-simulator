@@ -1,19 +1,22 @@
 import { player1Pokemons, player2Pokemons } from "./playersData.js";
 import { determinarVencedor } from "./battleLogic.js";
+import { resetProgresso } from "./addPokes.js";
 
 function initBattleLogic() {
   const botaoBatalhar = document.querySelector(".status-batalha button");
   const statusTexto = document.querySelector(".status-batalha h2");
 
   if (!botaoBatalhar) {
-    console.error("⚠️ Botão BATALHAR não encontrado!");
+    console.error("Botão BATALHAR não encontrado!");
     return;
   }
 
   
   botaoBatalhar.style.display = "none";
 
-  
+ 
+
+
   window.addEventListener("pokemonsAtualizados", () => {
     const total = player1Pokemons.length + player2Pokemons.length;
 
@@ -46,19 +49,31 @@ function renderBattleModal(resultado) {
   const { vencedor, total1, total2 } = resultado;
 
   let message = "";
-  let winnerImage = "";
+  let imagesHTML  = "";
   let name1 = player1Pokemons.map(p => p.name).join(" e ");
   let name2 = player2Pokemons.map(p => p.name).join(" e ");
 
   if (vencedor === "Jogador 1") {
     message = "🏆 JOGADOR 1 VENCEU!";
-    winnerImage = player1Pokemons[0].image;
+    imagesHTML = `
+    <div class=winner-container">
+      <img src="${player1Pokemons[0].image}" alt="${player1Pokemons[0].name}" class="winner-img bounce-animation">
+      <img src="${player1Pokemons[1].image}" alt="${player1Pokemons[1].name}" class="winner-img bounce-animation">
+      </div>
+      `;
   } else if (vencedor === "Jogador 2") {
     message = "🏆 JOGADOR 2 VENCEU!";
-    winnerImage = player2Pokemons[0].image;
+    imagesHTML = `
+    <div class=winner-container">
+      <img src="${player2Pokemons[0].image}" alt="${player2Pokemons[0].name}" class="winner-img bounce-animation">
+      <img src="${player2Pokemons[1].image}" alt="${player2Pokemons[1].name}" class="winner-img bounce-animation">
+      </div>
+      
+      
+  `;
   } else {
     message = "⚔️ DEU EMPATE!";
-    winnerImage = "./assets/img/MysteryPokemon-300x300.webp";
+    imagesHTML = `<img src="./assets/img/empate.png" alt="Empate" class="winner-img bounce-animation">`;
   }
 
   const modalOverlay = document.createElement("section");
@@ -67,7 +82,8 @@ function renderBattleModal(resultado) {
   modalOverlay.innerHTML = `
     <div class="modal result-modal">
       <h2>${message}</h2>
-      <img src="${winnerImage}" alt="Vencedor" class="winner-img bounce-animation">
+      
+      ${imagesHTML}
 
       <div class="scores">
         <p><strong>Jogador 1 (${name1}):</strong> ${total1} pts</p>
@@ -88,6 +104,8 @@ function renderBattleModal(resultado) {
 
 function resetArena() {
   const players = ["playerOne", "playerOneB", "playerTwo", "playerTwoB"];
+
+  resetProgresso();
 
   players.forEach((id) => {
     const p = document.getElementById(id);

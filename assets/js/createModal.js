@@ -1,8 +1,10 @@
 import { introMusic } from "./sounds.js";
 import getPokemon from "./getPokemon.js";
 import viewPokes from "./viewPokes.js";
+import addPoke from "./addPokes.js";
 
-function createModal() {
+function createModal(jogador = 1) {
+  
   const section = document.createElement("section");
   section.classList.add("modal-poke");
   document.body.prepend(section);
@@ -23,7 +25,7 @@ function createModal() {
   `;
   section.appendChild(modal);
 
-  
+ 
   section.addEventListener("click", (e) => {
     if (!modal.contains(e.target)) {
       introMusic.play();
@@ -36,12 +38,26 @@ function createModal() {
   const cardsContainer = modal.querySelector("#cards-poke");
 
   
+  viewPokes().then(() => {
+    if (jogador === 1) {
+      addPoke("playerOne", "playerOneB", 1);
+    } else {
+      addPoke("playerTwo", "playerTwoB", 2);
+    }
+  });
+
+  
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = input.value.trim().toLowerCase();
 
     if (!name) {
       await viewPokes();
+      if (jogador === 1) {
+        addPoke("playerOne", "playerOneB", 1);
+      } else {
+        addPoke("playerTwo", "playerTwoB", 2);
+      }
       return;
     }
 
@@ -58,6 +74,14 @@ function createModal() {
           <span>${pokemon.name}</span>
         </div>
       `;
+
+      
+      if (jogador === 1) {
+        addPoke("playerOne", "playerOneB", 1);
+      } else {
+        addPoke("playerTwo", "playerTwoB", 2);
+      }
+
     } catch (err) {
       console.error("Erro ao buscar Pokémon:", err);
     }
@@ -71,6 +95,13 @@ function createModal() {
   btnMore.addEventListener("click", async () => {
     offset += limit;
     await viewPokes(offset, limit);
+
+   
+    if (jogador === 1) {
+      addPoke("playerOne", "playerOneB", 1);
+    } else {
+      addPoke("playerTwo", "playerTwoB", 2);
+    }
   });
 }
 

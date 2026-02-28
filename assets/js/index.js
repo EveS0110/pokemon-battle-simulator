@@ -1,5 +1,4 @@
 import createModal from "./createModal.js";
-import viewPokes from "./viewPokes.js";
 import listPokeCard from "./listPokeCard.js"; 
 import initBattleLogic from "./battle.js";
 import { introMusic } from "./sounds.js";
@@ -13,13 +12,12 @@ const btn = document.querySelectorAll(".search-poke");
 
 btn.forEach((el, index) => {
   el.addEventListener("click", async () => {
+    const jogador = index === 0 ? 1 : 2; 
     
-    createModal();
-
-   
-    await viewPokes();
-
     
+    createModal(jogador);
+
+  
     introMusic.pause();
 
     
@@ -30,5 +28,6 @@ btn.forEach((el, index) => {
     }
   });
 });
+
 
 initBattleLogic();
