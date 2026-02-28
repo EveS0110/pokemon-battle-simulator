@@ -7,6 +7,7 @@
     <title>Pokémon Battle Simulator</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/ChatGPT Image 16 de fev. de 2026, 20_08_37.png">
     <link rel="stylesheet" href="assets/css/style.css">
+   
 </head>
 
 <body>
@@ -15,101 +16,90 @@
     </header>
 
     <main>
-        <section class="container">
-            <div class="card card-azul">
-                <div id="player1-container"></div>
-                <h2>JOGADOR 1</h2>
+        <main>
+  <section class="container">
 
-                <button class="search-poke player-blue">Escolha seu Pokémon</button>
+    <!-- ======== JOGADOR 1 ======== -->
+    <div class="card card-azul">
+      <h2>JOGADOR 1</h2>
+      <button class="search-poke player-blue">Escolha seus Pokémons</button>
 
-                <div id="playerOne" class="pokemon azul">
+      <!-- Primeiro Pokémon -->
+      <div id="playerOne" class="pokemon azul">
+        <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
+        <div class="poke-infor">
+          <h3 class="poke-name">Pokémon</h3>
+          <span class="type"></span>
+          <div class="atributes">
+            <div class="hp"><h3>HP</h3><p>...</p></div>
+            <div class="ataque"><h3>Ataque</h3><p>...</p></div>
+            <div class="defesa"><h3>Defesa</h3><p>...</p></div>
+          </div>
+        </div>
+      </div>
 
-                    <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
+      <!-- Segundo Pokémon -->
+      <div id="playerOneB" class="pokemon azul">
+        <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
+        <div class="poke-infor">
+          <h3 class="poke-name">Pokémon</h3>
+          <span class="type"></span>
+          <div class="atributes">
+            <div class="hp"><h3>HP</h3><p>...</p></div>
+            <div class="ataque"><h3>Ataque</h3><p>...</p></div>
+            <div class="defesa"><h3>Defesa</h3><p>...</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    <div class="poke-infor">
-                        <h3 class="poke-name">Pokémon</h3>
+    <!-- ======== STATUS CENTRAL ======== -->
+    <div class="status-batalha">
+      <h2>AGUARDANDO LUTADORES...</h2>
+      <button type="button">BATALHAR</button>
+    </div>
 
-                        <span class="type"></span>
+    <!-- ======== JOGADOR 2 ======== -->
+    <div class="card card-vermelho">
+      <h2>JOGADOR 2</h2>
+      <button class="search-poke player-red">Escolha seus Pokémons</button>
 
-                        <div class="atributes">
-                            <div class="hp">
-                                <h3>HP</h3>
-                                <p>...</p>
-                            </div>
+      <!-- Primeiro Pokémon -->
+      <div id="playerTwo" class="pokemon vermelho">
+        <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
+        <div class="poke-infor">
+          <h3 class="poke-name">Pokémon</h3>
+          <span class="type"></span>
+          <div class="atributes">
+            <div class="hp"><h3>HP</h3><p>...</p></div>
+            <div class="ataque"><h3>Ataque</h3><p>...</p></div>
+            <div class="defesa"><h3>Defesa</h3><p>...</p></div>
+          </div>
+        </div>
+      </div>
 
-                            <div class="ataque">
-                                <h3>Ataque</h3>
-                                <p>...</p>
-                            </div>
+      <!-- Segundo Pokémon -->
+      <div id="playerTwoB" class="pokemon vermelho">
+        <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
+        <div class="poke-infor">
+          <h3 class="poke-name">Pokémon</h3>
+          <span class="type"></span>
+          <div class="atributes">
+            <div class="hp"><h3>HP</h3><p>...</p></div>
+            <div class="ataque"><h3>Ataque</h3><p>...</p></div>
+            <div class="defesa"><h3>Defesa</h3><p>...</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                            <div class="defesa">
-                                <h3>Defesa</h3>
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="status-batalha">
-                <h2>AGUARDANDO LUTADORES...</h2>
-                <form class="batalha-form">
-                    <button>BATALHAR</button>
-                </form>
-            </div>
-
-            <div class="card card-vermelho">
-                <div id="player2-container"></div>
-                <h2>JOGADOR 2</h2>
-
-                <button class="search-poke player-red">Escolha seu Pokémon</button>
-
-                <div id="playerTwo" class="pokemon vermelho">
-
-                    <img class="poke-img" src="./assets/img/MysteryPokemon-300x300.webp" alt="">
-
-                    <div class="poke-infor">
-                        <h3 class="poke-name">Pokémon</h3>
-
-                        <span class="type"></span>
-
-                        <div class="atributes">
-                            <div class="hp">
-                                <h3>HP</h3>
-                                <p>...</p>
-                            </div>
-
-                            <div class="ataque">
-                                <h3>Ataque</h3>
-                                <p>...</p>
-                            </div>
-
-                            <div class="defesa">
-                                <h3>Defesa</h3>
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-    </main>
+  </section>
+</main>
 
     <script type="module" src="assets/js/index.js"></script>
+    
+    
 </body>
 
 </html>
 
-<!-- 
-     Instruções para quem vai montar o HTML:
-    - Criar duas áreas principais: uma para o Jogador 1 e outra para o Jogador 2.
-    - Cada jogador deve ter:
-       > Um campo de texto (input) para digitar o nome do Pokémon.
-       > Um botão "Buscar" para fazer a requisição.
-       > Um espaço (div) onde aparecerão os dados do Pokémon.
-    - Criar um botão "BATALHAR" que só será exibido quando os dois jogadores tiverem escolhido seus Pokémon.
-    - Adicionar também uma estrutura de modal (div oculta) para mostrar o resultado da batalha e o botão "Jogar Novamente".
-    - Seguir boas práticas de semântica (usar <section>, <main>, <footer>, etc.).
-  -->

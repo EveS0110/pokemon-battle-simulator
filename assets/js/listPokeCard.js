@@ -1,38 +1,22 @@
 import viewPokes from "./viewPokes.js";
-import addPoke from "./addPokes.js";
-import seachPokemon from "./seachPokemon.js";
+import addPokes from "./addPokes.js";
 
+function listPokeCard(card1, card2, jogador) {
+  let offset = 0;
 
+  addPokes(card1, card2, jogador);
 
-function listPokescard(card) {
-    let offset = 0;
+  const seeMore = document.getElementById("see-more");
+  if (!seeMore) return;
 
-    const form = document.getElementById("formsearch");
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-    });
+  const newSeeMore = seeMore.cloneNode(true);
+  seeMore.replaceWith(newSeeMore);
 
-    addPoke(card);
+  newSeeMore.addEventListener("click", async () => {
+    offset += 10;
+    await viewPokes(offset);
+    addPokes(card1, card2, jogador);
+  });
+}
 
-    const seeMre = document.getElementById("see-more");
-
-    seeMre.addEventListener("click", async () => {
-        offset += 10;
-        await viewPokes(offset);
-        addPoke(card);
-    });
-
-    const inputSearch = document.getElementById("seachPoke");
-    const btnSearch = document.getElementById("btnSearch");
-
-    btnSearch.addEventListener("click",async () => {
-        await seachPokemon(inputSearch.value);
-        const cardPoke = document.getElementById(`${inputSearch.value}`);
-
-        cardPoke.addEventListener("click", () => {
-            addPoke(card)
-        });
-    });
-};
-
-export default listPokescard;
+export default listPokeCard;

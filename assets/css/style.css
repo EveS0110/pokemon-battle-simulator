@@ -1,390 +1,333 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+/* ======= FONTES E RESET ======= */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* ======= VARIÁVEIS GLOBAIS ======= */
 :root {
-    --font-color: white;
-    --blue-player-background-color: #015596;
-    --blue-player-border-color: #2d9ad1;
-    --red-player-background-color: #7d0a02;
-    --red-player-border-color: #eb0322;
-    --form-background-color: #9CCFFF;
-    --button-color: #FEB21A;
+  --font-color: white;
+  --blue-player-bg: #015596;
+  --blue-player-border: #2d9ad1;
+  --red-player-bg: #7d0a02;
+  --red-player-border: #eb0322;
+  --button-color: #feb21a;
 
-    --primary: #00e5ff;
-    --primary-soft: rgba(0, 229, 255, 0.15);
-    --card-bg: #0f172a;
-    --border: rgba(255, 255, 255, 0.08);
-    --radius: 16px;
-    --transition: 0.25s ease;
+  --primary: #00e5ff;
+  --primary-soft: rgba(0, 229, 255, 0.15);
+  --card-bg: #0f172a;
+  --radius: 16px;
 
-    /* Tipos clássicos */
-  --type-normal: #A8A77A;
-  --type-fire: #EE8130;
-  --type-water: #6390F0;
-  --type-electric: #F7D02C;
-  --type-grass: #7AC74C;
-  --type-ice: #96D9D6;
-  --type-fighting: #C22E28;
-  --type-poison: #A33EA1;
-  --type-ground: #E2BF65;
-  --type-flying: #A98FF3;
-  --type-psychic: #F95587;
-  --type-bug: #A6B91A;
-  --type-rock: #B6A136;
+  
+  --type-normal: #a8a77a;
+  --type-fire: #ee8130;
+  --type-water: #6390f0;
+  --type-electric: #f7d02c;
+  --type-grass: #7ac74c;
+  --type-ice: #96d9d6;
+  --type-fighting: #c22e28;
+  --type-poison: #a33ea1;
+  --type-ground: #e2bf65;
+  --type-flying: #a98ff3;
+  --type-psychic: #f95587;
+  --type-bug: #a6b91a;
+  --type-rock: #b6a136;
   --type-ghost: #735797;
-  --type-dragon: #6F35FC;
+  --type-dragon: #6f35fc;
   --type-dark: #705746;
-  --type-steel: #B7B7CE;
-  --type-fairy: #D685AD;
+  --type-steel: #b7b7ce;
+  --type-fairy: #d685ad;
 }
 
-.type-fairy{
-    background-color: var(--type-fairy);
-}
-
-.type-steel{
-    background-color: var(--type-steel);
-}
-
-.type-dark{
-    background-color: var(--type-dark);
-}
-
-.type-dragon{
-    background-color: var(--type-dragon);
-}
-
-.type-ghost{
-    background-color: var(--type-ghost);
-}
-
-.type-rock{
-    background-color: var(--type-rock);
-}
-
-.type-bug{
-    background-color: var(--type-bug);
-}
-
-.type-psychic{
-    background-color: var(--type-psychic);
-}
-
-.type-flying{
-    background-color: var(--type-flying);
-}
-
-.type-ground{
-    background-color: var(--type-ground);
-}
-
-.type-poison{
-    background-color: var(--type-poison);
-}
-
-.type-fighting{
-    background-color: var(--type-fighting);
-}
-
-.type-ice{
-    background-color: var(--type-ice);
-}
-
-.type-grass{
-    background-color: var(--type-grass);
-}
-
-.type-normal{
-    background-color: var(--type-normal);
-}
-
-.type-fire{
-    background-color: var(--type-fire);
-}
-
-.type-water{
-    background-color: var(--type-water);
-}
-
-.type-electric{
-    background-color: var(--type-electric);
+/* ======= BASE ======= */
+body {
+  background: url("../img/fundo.png") center/cover fixed no-repeat;
+  color: var(--font-color);
+  font-family: "Roboto Mono", monospace;
 }
 
 h1 {
-    text-align: center;
-    color: var(--font-color);
-    font-family: "Roboto Mono", monospace;
-}
-
-body {
-    background-image: url("../img/fundo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  text-align: center;
+  margin: 1rem 0;
 }
 
 header {
-    padding: 20px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 }
 
+/* =========================================================
+    CONTAINER PRINCIPAL
+   ========================================================= */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 15px 0;
 }
 
-/*area de jogadores */
-
-.pokemon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1rem;
-    width: 100%;
+/* =========================================================
+    CARDS DOS JOGADORES
+   ========================================================= */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
+  font-family: "Roboto Mono", monospace;
 }
 
+.card-azul {
+  border: 3px solid var(--blue-player-border);
+}
+.card-vermelho {
+  border: 3px solid var(--red-player-border);
+}
+
+.card-azul h2 {
+  color: var(--blue-player-border);
+}
+.card-vermelho h2 {
+  color: var(--red-player-border);
+}
+
+/* ===== BOTÕES DE ESCOLHA ===== */
 .search-poke {
-    width: 75%;
-    padding: 8px 0;
-    border-radius: 8px;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #ffffffff;
+  width: 75%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
 }
 
 .player-blue {
-    background: linear-gradient(180deg, var(--blue-player-border-color), var(--blue-player-background-color) 60%);
+  background: linear-gradient(180deg, var(--blue-player-border), var(--blue-player-bg) 60%);
+}
+.player-red {
+  background: linear-gradient(180deg, var(--red-player-border), var(--red-player-bg) 60%);
 }
 
-.player-red {
-    background: linear-gradient(180deg, var(--red-player-border-color), var(--red-player-background-color) 60%);
+/* =========================================================
+    BLOCO DE CADA POKÉMON
+   ========================================================= */
+.pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 10px 0;
 }
 
 .poke-img {
-    width: 50%;
-    height: 40%;
+  width: 60%;
+  height: auto;
 }
 
 .poke-infor {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #00000075;
-    border-top: 1px solid rgb(255, 255, 255);
-    border-radius: 0 0 0.6rem 0.6rem;
-    color: #ffffffff;
-    padding: 5px 8px;
-    gap: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #00000075;
+  border-top: 1px solid #fff;
+  border-radius: 0 0 0.6rem 0.6rem;
+  padding: 8px;
+  gap: 8px;
 }
 
 .poke-name {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
+  text-align: center;
 }
 
 .type {
-    text-align: center;
-    padding: 3px 5px;
-    border-radius: 5px;
+  text-align: center;
+  padding: 3px 5px;
+  border-radius: 5px;
 }
 
 .atributes {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
 }
 
 .hp,
 .ataque,
 .defesa {
-    border: 1px solid #ffffffff;
-    padding: 2px 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  border: 1px solid #fff;
+  padding: 4px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hp h3,
 .ataque h3,
 .defesa h3 {
-    font-weight: 400;
-    font-size: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 
-.hp p,
-.ataque p,
-.defesa p {
-    font-weight: bolder;
-    font-size: 1.2rem;
+/* =========================================================
+    STATUS DA BATALHA
+   ========================================================= */
+.status-batalha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url(../img/status-batalha-fundo.png) center/cover no-repeat;
+  border-top: 0.5rem solid var(--red-player-border);
+  border-bottom: 0.5rem solid var(--blue-player-border);
+  border-left: 0.5rem solid var(--blue-player-border);
+  border-right: 0.5rem solid var(--red-player-border);
+  border-radius: 0.6rem;
+  width: 80%;
+  padding: 1.5rem;
+  text-align: center;
+  gap: 1rem;
 }
 
-
-.card {
-    font-family: "Roboto Mono", monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 90%;
+.status-batalha button {
+  background-color: var(--button-color);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.vermelho {
-    border: 3px solid var(--red-player-border-color);
-}
-
-.card-vermelho h2 {
-    color: var(--red-player-border-color);
-    text-align: center;
-}
-
-.azul {
-    border: 3px solid var(--blue-player-border-color);
-}
-
-.card-azul h2 {
-    color: var(--blue-player-border-color);
-    text-align: center;
-}
-
+/* =========================================================
+    MODAL (ESCOLHER POKÉMON)
+   ========================================================= */
 .modal-poke {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-    background-color: #00000093;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background-color: #00000093;
+  z-index: 10;
 }
 
 .modal {
-    background: rgba(10, 20, 35, 0.65);
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 229, 255, 0.25);
-    box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
-    padding: 10px;
-    width: 90%;
-    height: 85%;
+  background: rgba(10, 20, 35, 0.65);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
+  padding: 10px;
+  width: 90%;
+  height: 85%;
 }
 
 .modal form {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 8px;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
 }
 
 .modal form input {
-    padding: 12px 14px;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 229, 255, 0.3);
-    background: rgba(0, 10, 20, 0.6);
-    color: #fff;
-    width: 70%;
-    outline: none;
-}
-
-.modal input:focus {
-    border-color: #00e5ff;
-    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
-    transition: var(--transition);
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  background: rgba(0, 10, 20, 0.6);
+  color: #fff;
 }
 
 .modal form button {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 16px;
-    border-radius: 14px;
-    border: none;
-    background: linear-gradient(135deg, #00e5ff, #00bcd4);
-    color: #001018;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #00e5ff, #00bcd4);
+  color: #001018;
+  font-weight: bold;
+  cursor: pointer;
 }
 
+/* ===== CARDS DENTRO DO MODAL ===== */
 .cards-poke {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 84%;
-    overflow: hidden;
-    overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 84%;
+  overflow-y: scroll;
 }
-
 
 .poke-option {
-    width: 155px;
-    height: 180px;
-    background: rgba(10, 20, 35, 0.85);
-    border-radius: 16px;
-    padding: 12px;
-    border: 1px solid rgba(0, 229, 255, 0.35);
-    box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.1),
-        0 0 5px rgba(0, 229, 255, 0.25);
-    transition: 0.25s;
+  width: 160px;
+  height: 190px;
+  background: rgba(10, 20, 35, 0.85);
+  border-radius: 16px;
+  padding: 10px;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  transition: 0.25s;
+  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.1);
 }
 
 .poke-option:hover {
-    transform: translateY(-3px) scale(1.01);
-    border-color: #00e5ff;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+  transform: translateY(-3px) scale(1.01);
+  border-color: #00e5ff;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
 }
 
 .poke-option img {
-    width: 100%;
-    height: 85%;
+  width: 100%;
+  height: 85%;
 }
 
 .poke-option span {
-    text-align: center;
-    margin-top: 6px;
-    font-weight: 500;
-    color: #c8f6ff;
-    font-size: 1.3rem;
+  text-align: center;
+  display: block;
+  margin-top: 6px;
+  font-weight: 500;
+  color: #c8f6ff;
+  font-size: 1.2rem;
 }
 
+/* =========================================================
+    BOTÃO "VER MAIS" NO MODAL
+   ========================================================= */
 .btn-page {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    padding: 0 8px;
-    gap: 10px;
-    width: 100%;
-    height: 10%;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  gap: 10px;
 }
 
 .btn-page button {
-     width: 100%;
-  padding: 12px;
+  padding: 12px 24px;
   border-radius: 14px;
   border: 1px solid rgba(0, 229, 255, 0.4);
   background: rgba(0, 10, 20, 0.7);
   color: #9be7ff;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.25s;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
 }
 
 .btn-page button:hover {
@@ -393,107 +336,70 @@ header {
 }
 
 .btn-page button img {
-    width: 50%;
-    height: 100%;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
 }
 
-/* area de status de batalha*/
-.status-batalha {
-    display: flex;
-    flex-direction: column;
+
+
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+  padding-bottom: 2rem; 
+  overflow: hidden;
+}
+
+
+.btn-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.btn-page button {
+  max-width: 200px;  
+  width: 80%;        
+  text-align: center;
+}
+
+/* =========================================================
+    RESPONSIVIDADE
+   ========================================================= */
+@media (min-width: 900px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: center;
-    background-image: url(../img/status-batalha-fundo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border-top: 0.5rem solid var(--red-player-border-color);
-    border-right: 0.5rem solid var(--red-player-border-color);
-    border-bottom: 0.5rem solid var(--blue-player-border-color);
-    border-left: 0.5rem solid var(--blue-player-border-color);
-    border-radius: 0.6rem;
-    color: var(--font-color);
-    font-family: "Roboto Mono", monospace;
-    align-items: center;
-    text-align: center;
-    width: 80%;
-    height: 15rem;
-    gap: 2rem;
+    gap: 3rem;
+  }
+
+  .card {
+    flex: 1;
+    max-width: 360px;
+  }
+
+  .status-batalha {
+    flex: 0 0 280px;
+  }
 }
 
-.status-batalha button {
-    background-color: var(--button-color);
-    padding: 0.5rem;
-    border: 0;
-    border-radius: 0.6rem;
-    font-weight: 500;
+@media (max-width: 899px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .status-batalha {
+    order: 3;
+    width: 85%;
+  }
 }
 
-@media (min-width: 500px) {
-    .card {
-        width: 60%;
-    }
-}
 
-@media (min-width: 800px) {
-    body {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    main {
-        height: 100%;
-    }
-
-    .modal{
-        width: 72%;
-    }
-
-    .poke-option{
-        width: 200px;
-        height: 250px;
-    }
-
-    .container {
-        height: 100%;
-        position: relative;
-        gap: 23%;
-    }
-
-    .card {
-        width: 100%;
-        height: 60%;
-    }
-
-    .pokemon {
-        height: 100%;
-        width: 90%;
-    }
-
-    .status-batalha {
-        width: 25%;
-        height: 46%;
-        position: fixed;
-        top: 36%;
-    }
-
-    .poke-img {
-        width: 50%;
-        height: 50%;
-    }
-
-    .container {
-        flex-direction: row;
-        align-items: center;
-    }
-}
-
-@media (min-width: 970px) {
-    .container {
-        height: 100%;
-        padding: 0 10%;
-        position: relative;
-        gap: 30%;
-    }
-}

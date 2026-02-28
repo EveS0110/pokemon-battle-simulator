@@ -1,18 +1,23 @@
 import getAllPokemon from "./getAllPokemon.js";
 
 async function viewPokes(offset = 0, limit = 10) {
-    const cardsPoke = document.getElementById("cards-poke");
+  const cardsPoke = document.getElementById("cards-poke");
+  cardsPoke.innerHTML = "";
 
-    const pokemons = await getAllPokemon(offset, limit);
+  const pokemons = await getAllPokemon(offset, limit);
 
-    for (let i = 0; i < pokemons.length; i++) {
-        cardsPoke.innerHTML += `
-        <div id="${pokemons[i].name}" class="poke-option">
-        <img src="${pokemons[i].image}" alt="${pokemons[i].name}">
-        <span>${pokemons[i].name}</span>
-        </div>
-        `
-    };
-};
+  pokemons.forEach(poke => {
+    const div = document.createElement("div");
+    div.classList.add("poke-option");
+    div.dataset.name = poke.name;
+
+    div.innerHTML = `
+      <img src="${poke.image}" alt="${poke.name}">
+      <span>${poke.name}</span>
+    `;
+
+    cardsPoke.appendChild(div);
+  });
+}
 
 export default viewPokes;
