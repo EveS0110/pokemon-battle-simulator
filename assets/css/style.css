@@ -400,5 +400,37 @@ header {
     order: 3;
     width: 85%;
   }
+}.modal.result-modal {
+  height: auto;
+  max-height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.modal.result-modal button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #FEB21A;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal.result-modal button:hover {
+  background-color: #ffc84d;
+}
+.winner-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.winner-img {
+  width: 120px; 
+  height: auto;
 }
 
