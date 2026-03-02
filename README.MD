@@ -35,14 +35,5 @@ Uma aplicação interativa de batalha Pokémon desenvolvida para colocar à prov
 O projeto pode ser acessado online através do link abaixo:
 👉 **[COLOQUE SEU LINK DO GITHUB PAGES OU VERCEL AQUI]**
 
-## 📌 Checklist de Desenvolvimento
-
-- [x] README: o que faz + como usar + tecnologias
-- [ ] Colocar prints/GIF do funcionamento
-- [ ] Fazer deploy (GitHub Pages / Vercel / Render)
-- [ ] Testar link do deploy no celular e no desktop
-- [ ] Preparar post do LinkedIn com link + aprendizados
-
----
 
 Desenvolvido com ⚡ por Evely Sena, Cauã Maciel, Felícia Melany, Jhonathas de Macêdo, Lucas Ribeiro e Poliana Vitória
