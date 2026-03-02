@@ -1,4 +1,4 @@
-# ⚔️ Pokémon Battle Arena
+# ⚔️ Pokémon Battle Simullator
 
 Uma aplicação interativa de batalha Pokémon desenvolvida para colocar à prova as habilidades de estratégia e lógica. O projeto consome dados reais da PokeAPI e oferece uma experiência imersiva com trilha sonora dinâmica e interface visual moderna.
 
