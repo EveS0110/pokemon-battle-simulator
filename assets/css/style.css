@@ -22,6 +22,10 @@ body {
   background: url("../img/fundo.png") center/cover fixed no-repeat;
   color: var(--font-color);
   font-family: "Roboto Mono", monospace;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 h1 { text-align: center; margin: 1rem 0; }
@@ -312,4 +316,27 @@ header {
   .container { flex-direction: row; align-items: flex-start; }
   .card { flex: 1; max-width: 360px; }
   .status-batalha { flex: 0 0 300px; }
+}
+
+/* ======= AJUSTE DOS ESTADOS DE BATALHA ======= */
+
+/* Esconde APENAS o botão inicialmente */
+.status-batalha button {
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Classe para mostrar o botão quando estiver pronto */
+.status-batalha button.mostrar {
+    display: block !important;
+    opacity: 1 !important;
+    animation: pulsar 1.5s infinite ease-in-out;
+}
+
+/* EFEITO DE PULSAR */
+@keyframes pulsar {
+    0% { transform: scale(1); box-shadow: 0 0 0px rgba(254, 178, 26, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(254, 178, 26, 0.9); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(254, 178, 26, 0.7); }
 }
