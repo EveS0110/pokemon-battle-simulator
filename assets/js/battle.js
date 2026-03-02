@@ -73,7 +73,7 @@ function renderBattleModal(resultado) {
   `;
   } else {
     message = "⚔️ DEU EMPATE!";
-    imagesHTML = `<img src="./assets/img/empate.png" alt="Empate" class="winner-img bounce-animation">`;
+    imagesHTML = `<img src="./assets/img/MysteryPokemon-300x300.webp" alt="Empate" class="winner-img bounce-animation">`;
   }
 
   const modalOverlay = document.createElement("section");
