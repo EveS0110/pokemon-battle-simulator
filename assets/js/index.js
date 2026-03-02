@@ -1,7 +1,7 @@
 import createModal from "./createModal.js";
 import listPokeCard from "./listPokeCard.js"; 
 import initBattleLogic from "./battle.js";
-import { introMusic } from "./sounds.js";
+import { introMusic, startBattleMusic } from "./sounds.js";
 
 document.addEventListener("click", () => {
   introMusic.play();
@@ -18,7 +18,9 @@ btn.forEach((el, index) => {
     createModal(jogador);
 
   
-    introMusic.pause();
+    if (window.playerOneSelected && window.playerTwoSelected) {
+        startBattleMusic();
+    }
 
     
     if (index === 0) {

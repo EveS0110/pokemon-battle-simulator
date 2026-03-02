@@ -1,4 +1,3 @@
-// assets/js/modalResultado.js
 export function mostrarModalVencedor(resultado) {
   const modal = document.createElement("div");
   modal.classList.add("modal-resultado");
