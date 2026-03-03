@@ -1,4 +1,3 @@
-// assets/js/index.js
 import createModal from "./createModal.js";
 import listPokeCard from "./listPokeCard.js"; 
 import initBattleLogic from "./battle.js";
@@ -65,5 +64,4 @@ btnSearch.forEach((el, index) => {
     });
 });
 
-// Inicializa a lógica de cálculo da batalha (HP, ataque, etc)
 initBattleLogic();
