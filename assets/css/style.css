@@ -217,6 +217,18 @@ header {
   padding: 10px;
 }
 
+.card-azul:has(.poke-img) {
+    border-color: #00e5ff;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+    background: rgba(0, 229, 255, 0.1);
+}
+
+.card-vermelho:has(.poke-img) {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 25px rgba(255, 77, 77, 0.6);
+    background: rgba(255, 77, 77, 0.1);
+}
+
 .poke-option {
   flex: 0 0 auto;
   width: 130px;
@@ -237,6 +249,12 @@ header {
   transform: translateY(-5px);
   border-color: var(--primary);
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+}
+
+.cards-poke:hover .poke-option:not(:hover) {
+    opacity: 0.4;
+    filter: grayscale(100%) blur(1px);
+    transform: scale(0.95);
 }
 
 .poke-option img {
@@ -320,7 +338,7 @@ header {
 
 /* ======= AJUSTE DOS ESTADOS DE BATALHA ======= */
 
-/* Esconde APENAS o botão inicialmente */
+
 .status-batalha button {
     display: none; 
     opacity: 0;
