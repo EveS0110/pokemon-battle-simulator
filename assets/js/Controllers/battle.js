@@ -1,7 +1,7 @@
 import { player1Pokemons, player2Pokemons } from "./playersData.js";
 import { determinarVencedor } from "./battleLogic.js";
-import { resetSons } from "./sounds.js";
-import { resetProgresso } from "./addPokes.js";
+import { resetSons } from "../Utils/sounds.js";
+import { resetProgresso } from "../Views/addPokes.js";
 
 function initBattleLogic() {
   const botaoBatalhar = document.querySelector(".status-batalha button");
