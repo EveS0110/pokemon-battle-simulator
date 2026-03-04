@@ -1,8 +1,7 @@
-// assets/js/index.js
-import createModal from "./createModal.js";
-import listPokeCard from "./listPokeCard.js"; 
-import initBattleLogic from "./battle.js";
-import { introMusic, unlockSounds, startBattleMusic } from "./sounds.js";
+import createModal from "./Views/createModal.js";
+import listPokeCard from "./Views/listPokeCard.js"; 
+import initBattleLogic from "./Controllers/battle.js";
+import { introMusic, unlockSounds, startBattleMusic } from "./Utils/sounds.js";
 
 // Seleciona os elementos do Overlay
 const overlay = document.getElementById("overlay-inicio");
@@ -65,5 +64,4 @@ btnSearch.forEach((el, index) => {
     });
 });
 
-// Inicializa a lógica de cálculo da batalha (HP, ataque, etc)
 initBattleLogic();

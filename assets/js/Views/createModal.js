@@ -1,5 +1,5 @@
-import { introMusic } from "./sounds.js";
-import getPokemon from "./getPokemon.js";
+import { introMusic } from "../Utils/sounds.js";
+import getPokemon from "../Api/getPokemon.js";
 import viewPokes from "./viewPokes.js";
 import addPoke from "./addPokes.js";
 

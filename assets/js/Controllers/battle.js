@@ -1,7 +1,7 @@
 import { player1Pokemons, player2Pokemons } from "./playersData.js";
 import { determinarVencedor } from "./battleLogic.js";
-import { resetSons } from "./sounds.js";
-import { resetProgresso } from "./addPokes.js";
+import { resetSons } from "../Utils/sounds.js";
+import { resetProgresso } from "../Views/addPokes.js";
 
 function initBattleLogic() {
   const botaoBatalhar = document.querySelector(".status-batalha button");
@@ -12,11 +12,7 @@ function initBattleLogic() {
     return;
   }
 
-  
   botaoBatalhar.style.display = "none";
-
- 
-
 
   window.addEventListener("pokemonsAtualizados", () => {
     const total = player1Pokemons.length + player2Pokemons.length;
@@ -30,7 +26,6 @@ function initBattleLogic() {
     }
   });
 
-  
   botaoBatalhar.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -38,7 +33,6 @@ function initBattleLogic() {
     console.log("👾 Player 1:", player1Pokemons);
     console.log("👾 Player 2:", player2Pokemons);
 
-    
     const resultado = determinarVencedor(player1Pokemons, player2Pokemons);
     console.log("🏆 Resultado:", resultado);
 
@@ -50,9 +44,9 @@ function renderBattleModal(resultado) {
   const { vencedor, total1, total2 } = resultado;
 
   let message = "";
-  let imagesHTML  = "";
-  let name1 = player1Pokemons.map(p => p.name).join(" e ");
-  let name2 = player2Pokemons.map(p => p.name).join(" e ");
+  let imagesHTML = "";
+  let name1 = player1Pokemons.map((p) => p.name).join(" e ");
+  let name2 = player2Pokemons.map((p) => p.name).join(" e ");
 
   if (vencedor === "Jogador 1") {
     message = "🏆 JOGADOR 1 VENCEU!";
@@ -127,7 +121,6 @@ function resetArena() {
     }
   });
 
-  
   player1Pokemons.length = 0;
   player2Pokemons.length = 0;
 

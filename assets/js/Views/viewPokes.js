@@ -1,4 +1,4 @@
-import getAllPokemon from "./getAllPokemon.js";
+import getAllPokemon from "../Api/getAllPokemon.js";
 
 async function viewPokes(offset = 0, limit = 10) {
   const cardsPoke = document.getElementById("cards-poke");

@@ -1,6 +1,6 @@
-import getPokemon from "./getPokemon.js";
-import { setPlayerPokemons } from "./playersData.js";
-import { playHover, playChoose, stopBattleMusic } from "./sounds.js";
+import getPokemon from "../Api/getPokemon.js";
+import { setPlayerPokemons } from "../Controllers/playersData.js";
+import { playHover, playChoose, stopBattleMusic } from "../Utils/sounds.js";
 
 const progressoEscolha = {
   1: { slot: 0, lista: [] },
