@@ -1,4 +1,3 @@
-g
 export const introMusic = new Audio("./assets/audio/openmusic.mp3");
 export const battleMusic = new Audio("./assets/audio/WhatsApp Audio 2026-02-23 at 19.59.21.mp3");
 
