@@ -33,7 +33,7 @@ Uma aplicação interativa de batalha Pokémon desenvolvida para colocar à prov
 ## 🌐 Deploy
 
 O projeto pode ser acessado online através do link abaixo:
-👉 **[COLOQUE SEU LINK DO GITHUB PAGES OU VERCEL AQUI]**
+👉 **[https://pokemon-battle-sim.netlify.app/]**
 
 
 Desenvolvido com ⚡ por Evely Sena, Cauã Maciel, Felícia Melany, Jhonathas de Macêdo, Lucas Ribeiro e Poliana Vitória
