@@ -1,6 +1,6 @@
 import { player1Pokemons, player2Pokemons } from "./playersData.js";
 import { determinarVencedor } from "./battleLogic.js";
-import { resetSons } from "../Utils/sounds.js";
+import { resetSons, stopBattleMusic } from "../Utils/sounds.js";
 import { resetProgresso } from "../Views/addPokes.js";
 
 function initBattleLogic() {
@@ -41,6 +41,7 @@ function initBattleLogic() {
 }
 
 function renderBattleModal(resultado) {
+  stopBattleMusic();
   const { vencedor, total1, total2 } = resultado;
 
   let message = "";
@@ -95,13 +96,16 @@ function renderBattleModal(resultado) {
     resetSons();
     modalOverlay.remove();
     resetArena();
+    
   });
 }
 
 function resetArena() {
   const players = ["playerOne", "playerOneB", "playerTwo", "playerTwoB"];
 
+
   resetProgresso();
+  
 
   players.forEach((id) => {
     const p = document.getElementById(id);

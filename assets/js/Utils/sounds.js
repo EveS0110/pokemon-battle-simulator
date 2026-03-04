@@ -1,5 +1,4 @@
-// assets/js/sounds.js
-
+g
 export const introMusic = new Audio("./assets/audio/openmusic.mp3");
 export const battleMusic = new Audio("./assets/audio/WhatsApp Audio 2026-02-23 at 19.59.21.mp3");
 
@@ -14,7 +13,7 @@ const chooseSound = new Audio("./assets/audio/choose.mp3");
 hoverSound.volume = 0.4;
 chooseSound.volume = 0.7;
 
-// Função para desbloquear áudio (essencial para mobile e PC)
+
 export function unlockSounds() {
     [introMusic, battleMusic, hoverSound, chooseSound].forEach(s => {
         s.muted = false;
@@ -39,7 +38,7 @@ export function playChoose() {
 }
 
 export function startBattleMusic() {
-    // Só inicia se a música de batalha NÃO estiver tocando
+    
     if (battleMusic.paused) {
         introMusic.pause();
         introMusic.currentTime = 0;
@@ -57,8 +56,26 @@ export function resetSons() {
     introMusic.play().catch(() => {});
 }
 
-// assets/js/sounds.js
+
+
 export function stopBattleMusic() {
-    battleMusic.pause();
-    battleMusic.currentTime = 0;
+    
+    if (battleMusic) {
+        battleMusic.pause();          
+        battleMusic.muted = true;     
+        battleMusic.volume = 0;       
+        battleMusic.currentTime = 0;  
+        
+       
+        const oldSrc = battleMusic.src;
+        battleMusic.src = ""; 
+        battleMusic.load();
+        
+       
+        setTimeout(() => {
+            battleMusic.src = oldSrc;
+            battleMusic.muted = false; 
+            battleMusic.volume = 0.5;
+        }, 100);
+    }
 }
